@@ -29,18 +29,12 @@ const todoList = () => {
       }
     
       const toDisplayableList = (list) => {
-          return list
-          .map((item, index) => {
-            const dueText = item.dueDate
-              ? item.dueDate === today
-                ? "" // For tasks due today, don't include the date
-                : ` ${item.dueDate}`
-              : "";
-            const completionStatus = item.completed ? "[x]" : "[ ]";
-            return `${completionStatus} ${item.title}${dueText}`;
-          })
-          .join("\n");
-    
+        return list.map(item => {
+            const dueText = item.dueDate? item.dueDate === new Date().toISOString().split("T")[0] ? "" : `${item.dueDate}` :"";
+            // For tasks due today, don't include the date
+            const Status = item.completed ? "[x]" : "[ ]";
+            return `${Status} ${item.title}${dueText}`;
+        })
         // Format the To-Do list here, and return the output string
         // as per the format given above.
       }
