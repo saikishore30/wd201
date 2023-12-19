@@ -33,8 +33,9 @@ const todoList = () => {
             const dueText = item.dueDate? item.dueDate === new Date().toISOString().split("T")[0] ? "" : `${item.dueDate}` :"";
             // For tasks due today, don't include the date
             const Status = item.completed ? "[x]" : "[ ]";
-            return `${Status} ${item.title}${dueText}`;
+            return `${Status} ${item.title} ${dueText}`;
         })
+        .join("\n");
         // Format the To-Do list here, and return the output string
         // as per the format given above.
       }
